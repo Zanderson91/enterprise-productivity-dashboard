@@ -12,17 +12,21 @@
 }
 
 .navbarWrapper{
+    position:sticky;
     height: 100%;
     padding: 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: rgba(255, 99, 71, 0.651);
+    top: 0;
+    
 }
 
 .logo {
     font-weight: 700;
-    font-size: 22px;
-    color:tomato; 
+    font-size: 18px;
+    color:white; 
 }
 
 .topIconNotif {
@@ -43,4 +47,12 @@
 .topRight {
     display: flex;
     align-items: center;
+}
+
+.profilePhoto {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: tomato;
 }
