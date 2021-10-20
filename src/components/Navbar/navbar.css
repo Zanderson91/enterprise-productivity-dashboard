@@ -4,6 +4,13 @@
     background-color: white;
 }
 
+.navbarIcon {
+    color: #777;
+    position: relative;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
 .navbarWrapper{
     height: 100%;
     padding: 0px 20px;
@@ -15,5 +22,25 @@
 .logo {
     font-weight: 700;
     font-size: 22px;
-    color:tomato;
+    color:tomato; 
+}
+
+.topIconNotif {
+    position: absolute;
+    top: 0px;
+    right: -2px;
+    background-color: yellow;
+    color: tomato;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.topRight {
+    display: flex;
+    align-items: center;
 }

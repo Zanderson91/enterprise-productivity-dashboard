@@ -11,15 +11,15 @@ export default function Navbar() {
                     <span className="logo">Welcome to your Dashboard</span>
                 </div>
                 <div className="topRight">
-                    <div className="navbarIconContainer">
+                    <div className="navbarIcon">
                         <NotificationsNone />
-                        <span className="topIconBadge">2</span>
+                        <span className="topIconNotif">2</span>
                     </div>
-                    <div className="navbarIconContainer">
+                    <div className="navbarIcon">
                         <Language />
-                        <span className="topIconBadge">2</span>
+                        <span className="topIconNotif">2</span>
                     </div>
-                    <div className="navbarIconContainer">
+                    <div className="navbarIcon">
                         <Settings />
                     </div>
                 </div>
