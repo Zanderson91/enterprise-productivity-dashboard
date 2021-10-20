@@ -5,28 +5,27 @@
 }
 
 .navbarIcon {
-    color: #777;
+    color: #f4a261;
     position: relative;
     cursor: pointer;
     margin-right: 5px;
 }
 
-.navbarWrapper{
-    position:sticky;
+.navbarWrapper {
+    position: sticky;
     height: 100%;
     padding: 0px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(255, 99, 71, 0.651);
+    background-color: #264653;
     top: 0;
-    
 }
 
 .logo {
     font-weight: 700;
     font-size: 18px;
-    color:white; 
+    color: white;
 }
 
 .topIconNotif {
@@ -54,5 +53,5 @@
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: tomato;
+    background-color: #e76f51;
 }

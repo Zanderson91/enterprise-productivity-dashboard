@@ -1,6 +1,7 @@
 .sidebar {
     flex: 1;
-    background-color: white;
+    height: calc(100vh - 20px);
+    background-color: #2a9d8f;
 }
 
 .something {

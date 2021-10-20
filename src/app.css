@@ -1,3 +1,12 @@
+/* Color Palette to be added to Root
+Primary - #264653
+Secondary - #2a9d8f
+Color 3 - #e9c46a
+Color 4 - #f4a261
+Color 5 - #e76f51
+
+*/
+
 .container {
     display: flex;
 }
