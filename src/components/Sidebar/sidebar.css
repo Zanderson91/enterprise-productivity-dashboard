@@ -8,3 +8,23 @@
     flex: 6;
     background-color: #f1f1f1;
 }
+
+.sidebarMenu {
+    margin-bottom: 10px;
+}
+
+.sidebarList {
+    list-style: none;
+    padding: 10px;
+}
+
+.sidebarListItem {
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+}
+
+.sidebarListItem.active, .sidebarListItem:hover {
+    background-color: #e76f51;
+}
