@@ -1,9 +1,14 @@
-import Topbar from './components/Navbar/Navbar'
+import Navbar from './components/navbar/Navbar'
+import { Button } from "@material-ui/core";
+import Header from "./components/Header/header";
+
 function App() {
     return (
         <div className="App">
-<Topbar/>
-        </div>
+            <Header/>
+        <Button> Press me </Button>
+        <Navbar />
+      </div>
     );
 }
 
