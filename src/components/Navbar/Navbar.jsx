@@ -1,6 +1,7 @@
 import React from "react";
-
+import "./navbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+
 
 export default function Navbar() {
     return (
@@ -21,9 +22,8 @@ export default function Navbar() {
                     <div className="navbarIconContainer">
                         <Settings />
                     </div>
-                    
                 </div>
             </div>
         </div>
-    );
+    )
 }
