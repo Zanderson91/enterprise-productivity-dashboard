@@ -4,3 +4,7 @@
     -webkit-box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.59);
     box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.59);
 }
+
+.graphDataTitle{
+    margin-bottom: 30px;
+}
