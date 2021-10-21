@@ -7,7 +7,7 @@ export default function Homepage() {
     return (
         <div className="homepage">
             <Card />
-            <Graph data={userData} title="New Title" grid dataKey="name"/>
+            <Graph data={userData} title="Utilizing Props to change title!" grid dataKey="name"/>
         </div>
     )
 }
