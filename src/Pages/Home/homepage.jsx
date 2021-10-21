@@ -7,7 +7,7 @@ export default function Homepage() {
     return (
         <div className="homepage">
             <Card />
-            <Graph data={userData} title="Testing Graph Functionality" grid dataKey="name"/>
+            <Graph data={userData} title="New Title" grid dataKey="name"/>
         </div>
     )
 }
