@@ -1,10 +1,14 @@
 .graph {
-    margin: 10px;
+    margin: 20px 20px;
     padding: 10px;
+    border-radius: 10px;
     -webkit-box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.59);
     box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.59);
 }
 
-.graphDataTitle{
-    margin-bottom: 30px;
+.graphDataTitle {
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600px;
 }
