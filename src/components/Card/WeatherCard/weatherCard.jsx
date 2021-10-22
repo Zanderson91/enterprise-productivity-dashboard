@@ -11,7 +11,29 @@ export default function WeatherCard() {
     const [cityWindSpeed, setCityWindSpeed] = useState(0);
     const [cityHumidity, setCityHumidity] = useState(0);
     const [status, setStatus] = useState("");
-    
+
+    useEffect(() => {
+        if (cityName !== "") {
+          console.log(cityName);
+          const getWeatherData = async () => {
+            try {
+                const { latitude, longitude } = await getLongitudeAndLatitude(cityName);
+                const { temp, windSpeed, humidity } = await getWeatherStats(latitude, longitude);
+                setCityTemp(temp);
+                setCityWindSpeed(windSpeed);
+                setCityHumidity(humidity);
+            }
+            catch (error) {
+                setStatus(error);
+                console.log(error);
+            }
+          };
+          getWeatherData();
+          setStatus("");
+          setInput("");
+        }
+      }, [cityName]);
+
     return (
         <div className="cardItem">
 
