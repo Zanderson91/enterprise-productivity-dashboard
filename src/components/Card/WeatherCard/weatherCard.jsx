@@ -45,6 +45,22 @@ export default function WeatherCard() {
 
     return (
         <div className="cardItem">
+            <span className="cardTitle">Current Weather: {cityName}</span>
+            <div className="cardContainer">
+                <div className="weatherinfo1">{cityTemp}</div>
+                <div className="weatherinfo1">{cityWindSpeed}</div>
+                <div className="weatherinfo1">{cityHumidity}</div>
+            </div>
+            <input
+                type="text"
+                value={input}
+                name="text"
+                onChange={handleChange}
+            />
+            <button className="btn btn-primary"
+                type="button"
+                onClick={() => handleClick(input)}>Click This
+            </button>
 
         </div>
     );
