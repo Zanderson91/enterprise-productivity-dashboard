@@ -2,7 +2,6 @@ import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/sidebar";
 import "./app.css";
 import Homepage from "./Pages/Home/homepage";
-import GmailSidebarItem from "./components/sidebarTest/sidebarTest";
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -10,6 +9,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+
 
 function App() {
   return (

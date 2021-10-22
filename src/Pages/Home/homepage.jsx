@@ -5,6 +5,7 @@ import { userData } from "../../components/testData";
 import { MediaControlCard } from "../../components/musicCard/musicCard";
 import { SubComponentsPickers } from "../../components/Calendar/calendar"
 import { SolidGameCardDemo } from "../../components/GamingCard/gamingCard"
+import { GrowIconButtonStyle } from "../../components/Social/socialIcons"
 
 
 export default function Homepage() {
@@ -21,6 +22,7 @@ export default function Homepage() {
         <SubComponentsPickers className="subComponent" />
         <SolidGameCardDemo className="game" />
       </div>
+      <GrowIconButtonStyle />
     </div>
   );
 }
