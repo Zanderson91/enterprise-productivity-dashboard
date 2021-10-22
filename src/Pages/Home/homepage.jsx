@@ -4,6 +4,8 @@ import Graph from "../../components/Graph/graph";
 import { userData } from "../../components/testData";
 import { MediaControlCard } from "../../components/musicCard/musicCard";
 import { SubComponentsPickers } from "../../components/Calendar/calendar"
+import { SolidGameCardDemo } from "../../components/GamingCard/gamingCard"
+
 
 export default function Homepage() {
   return (
@@ -15,7 +17,10 @@ export default function Homepage() {
         grid
         dataKey="name"
       />
-      <SubComponentsPickers />
+      <div className="rowContain">
+        <SubComponentsPickers className="subComponent" />
+        <SolidGameCardDemo className="game" />
+      </div>
     </div>
   );
 }
