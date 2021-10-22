@@ -47,9 +47,9 @@ export default function WeatherCard() {
         <div className="cardItem">
             <span className="cardTitle">Current Weather: {cityName}</span>
             <div className="cardContainer">
-                <div className="weatherinfo1">{cityTemp}</div>
-                <div className="weatherinfo1">{cityWindSpeed}</div>
-                <div className="weatherinfo1">{cityHumidity}</div>
+                <div className="weatherInfo">{cityTemp}</div>
+                <div className="weatherInfo">{cityWindSpeed}</div>
+                <div className="weatherInfo">{cityHumidity}</div>
             </div>
             <input
                 type="text"
