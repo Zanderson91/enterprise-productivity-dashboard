@@ -32,7 +32,16 @@ export default function WeatherCard() {
           setStatus("");
           setInput("");
         }
-      }, [cityName]);
+    }, [cityName]);
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        setInput(value);
+      }
+    
+    const handleClick = () => { setCityName(input); }
+
+
 
     return (
         <div className="cardItem">
