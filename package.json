@@ -25,6 +25,7 @@
     "@mui/lab": "^5.0.0-alpha.51",
     "@mui/material": "^5.0.4",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.0",
+    "apollo-boost": "^0.4.9",
     "auth0-js": "^9.17.0",
     "classnames": "^2.2.6",
     "core-js": "^3.9.1",

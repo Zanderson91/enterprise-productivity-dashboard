@@ -13,6 +13,11 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./register.css"
+import Auth from "../../utils/auth";
+import { ADD_USER } from "../../utils/mutations";
+import { useMutation } from "@apollo/react-hooks";
+import { useState } from "react";
+
 
 function Copyright(props) {
   return (
@@ -34,14 +39,45 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignUp() {
-  const handleSubmit = (event) => {
+const SignupForm = () => {
+  const [addUser] = useMutation(ADD_USER);
+  // set initial form state
+  const [userFormData, setUserFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  // set state for form validation
+  const [validated] = useState(false);
+  // set state for alert
+  const [showAlert, setShowAlert] = useState(false);
+
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+
+    //   const data = new FormData(event.currentTarget);
+    //   // eslint-disable-next-line no-console
+    //   console.log({
+    //     email: data.get("email"),
+    //     password: data.get("password"),
+    //   });
+    // };
+    try {
+      const { data } = await addUser({
+        variables: { ...userFormData },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+      setShowAlert(true);
+    }
+
+    setUserFormData({
+      username: "",
+      email: "",
+      password: "",
     });
   };
 
@@ -142,4 +178,6 @@ export default function SignUp() {
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default SignupForm;
