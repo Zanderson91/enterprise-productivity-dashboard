@@ -1,0 +1,58 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+:root
+{
+    --nav-bg: #264653;
+}
+.weatherContainer
+{
+    display: flex;    
+    width: 100%;
+    height: 200px;
+}
+.weatherContainer div:nth-child(1)
+{
+    height: 100%;
+    width: 60%;
+}
+.weatherContainer div:nth-child(2)
+{
+    height: 100%;
+    width: 40%;
+}
+.weatherStats
+{
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    text-transform: capitalize;
+}
+
+.temp::after { content: "\2109"; }
+
+img
+{
+    
+    height:100%;
+    width:100%;
+}
+
+.navBg 
+{ 
+    /* background-color: white); 
+    color: white; */
+}
+
+button
+{
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.uviColor
+{
+    background-color: red;
+}

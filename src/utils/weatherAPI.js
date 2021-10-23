@@ -15,6 +15,9 @@ export async function getWeatherStats (latitude, longitude) {
     const jsonData = await response.json();
     const temp = jsonData.current.temp;
     const windSpeed = jsonData.current.wind_speed;                       
-    const humidity = jsonData.current.humidity;              
-    return { temp, windSpeed, humidity };
+    const humidity = jsonData.current.humidity;
+    const uvi = jsonData.current.uvi;
+    const description = jsonData.current.weather[0].description;
+    const icon = jsonData.current.weather[0].icon;            
+    return { temp, windSpeed, humidity, uvi, description, icon };                      
 };
