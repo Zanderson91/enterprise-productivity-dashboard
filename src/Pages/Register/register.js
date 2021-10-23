@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./register.css"
 
 function Copyright(props) {
   return (
@@ -22,8 +23,8 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="#">
+        Enterprise Productivity Dashboard
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -131,7 +132,7 @@ export default function SignUp() {
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                  Already have an account? Login
                 </Link>
               </Grid>
             </Grid>

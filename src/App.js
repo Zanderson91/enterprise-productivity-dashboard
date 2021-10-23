@@ -9,6 +9,9 @@ import {
   Route,
   Link
 } from "react-router-dom";
+// import Sidebar from "./components/Sidebar1/Sidebar1";
+import SignUp from "./Pages/Register/register";
+
 
 
 
@@ -18,8 +21,15 @@ function App() {
       <Navbar />
       <div className="App">
         <div className="container">
-          <Sidebar />
-          <Homepage />
+          <Switch>
+            <Route exact path="/">
+              <Sidebar />
+              <Homepage />
+            </Route>
+            <Route path="/register">
+              <SignUp />
+            </Route>
+          </Switch>
         </div>
       </div>
     </Router>

@@ -36,6 +36,7 @@
     "react-big-calendar": "^0.38.0",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-intl": "^5.21.0",
     "react-redux": "^7.2.5",
     "react-router": "^5.2.1",
     "react-router-dom": "^5.2.0",
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "auto-changelog": "~2.2.1",
+    "extract-react-intl-messages": "^4.1.1",
     "react-scripts": "^4.0.3"
   },
   "scripts": {
