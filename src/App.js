@@ -12,6 +12,8 @@ import {
 // import Sidebar from "./components/Sidebar1/Sidebar1";
 import SignUp from "./Pages/Register/register";
 import SignInSide from "./Pages/Login/login";
+import { ApolloProvider } from "@apollo/react-hooks";
+import ApolloClient from "apollo-boost";
 
 
 
@@ -19,25 +21,27 @@ import SignInSide from "./Pages/Login/login";
 
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <div className="App">
-        <div className="container">
-          <Switch>
-            <Route exact path="/">
-              <Sidebar />
-              <Homepage />
-            </Route>
-            <Route path="/register">
-              <SignUp />
-            </Route>
-            <Route path="/login">
-              <SignInSide />
-            </Route>
-          </Switch>
+    <ApolloProvider client={client}>
+      <Router>
+        <Navbar />
+        <div className="App">
+          <div className="container">
+            <Switch>
+              <Route exact path="/">
+                <Sidebar />
+                <Homepage />
+              </Route>
+              <Route path="/register">
+                <SignUp />
+              </Route>
+              <Route path="/login">
+                <SignInSide />
+              </Route>
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </ApolloProvider>
   );
 }
 
