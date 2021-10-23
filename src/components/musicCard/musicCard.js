@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
+import './music.css'
 
 export function MediaControlCard() {
   const theme = useTheme();
@@ -50,8 +51,8 @@ export function MediaControlCard() {
       <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image="/static/images/cards/live-from-space.jpg"
-        alt="Live from space album cover"
+        image="https://source.unsplash.com/random"
+        alt="Your Favorite Music"
       />
     </Card>
   );

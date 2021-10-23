@@ -10,7 +10,6 @@
     align-items: center;
 }
 
-
 .cardItem {
     flex: 1;
     margin: 40px 20px;
@@ -26,3 +25,9 @@
     font-weight: 700;
 }
 
+.music {
+    flex: 1;
+    margin: 40px 20px;
+    padding: 20px;
+    align-items: center;
+}
