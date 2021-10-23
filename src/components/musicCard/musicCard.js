@@ -50,7 +50,7 @@ export function MediaControlCard() {
       </Box>
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{ width: 100 }}
         image="https://source.unsplash.com/random"
         alt="Your Favorite Music"
       />
