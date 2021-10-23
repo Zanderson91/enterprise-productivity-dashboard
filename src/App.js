@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 // import Sidebar from "./components/Sidebar1/Sidebar1";
 import SignUp from "./Pages/Register/register";
+import SignInSide from "./Pages/Login/login";
 
 
 
@@ -28,6 +29,9 @@ function App() {
             </Route>
             <Route path="/register">
               <SignUp />
+            </Route>
+            <Route path="/login">
+              <SignInSide />
             </Route>
           </Switch>
         </div>
