@@ -52,7 +52,8 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
-
+  console.log(userFormData)
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -75,7 +76,8 @@ const SignupForm = () => {
     }
 
     setUserFormData({
-      username: "",
+      firstName: "",
+      lastName:"",
       email: "",
       password: "",
     });
@@ -115,6 +117,12 @@ const SignupForm = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(e) => {
+                    setUserFormData({
+                      ...userFormData,
+                      firstName: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -125,6 +133,12 @@ const SignupForm = () => {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(e) => {
+                    setUserFormData({
+                      ...userFormData,
+                      lastName: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -135,6 +149,12 @@ const SignupForm = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(e) => {
+                    setUserFormData({
+                      ...userFormData,
+                      email: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -146,6 +166,12 @@ const SignupForm = () => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e) => {
+                    setUserFormData({
+                      ...userFormData,
+                      password: e.target.value,
+                    });
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
