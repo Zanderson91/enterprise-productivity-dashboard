@@ -11,4 +11,14 @@ module.exports = {
 
     res.status(200).json(toDo);
   },
+
+  async getAllToDos(req, res) {
+    const allToDos = await ToDo.find({});
+
+    if (!allToDos) {
+      return res.status(400).json({ message: 'Unable to find todos' });
+    }
+
+    res.status(200).json(allToDos);
+  },
 };
