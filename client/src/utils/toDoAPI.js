@@ -23,3 +23,11 @@ export const getAllToDos = async () => {
     const data = await response.json();
     return data;
 };
+
+export const removeToDo = async (toDoId) => {
+    const options = {
+      method: 'DELETE',
+    }
+    const response = await fetch(`/api/toDo/${toDoId}`, options);
+    await response.json();
+};
