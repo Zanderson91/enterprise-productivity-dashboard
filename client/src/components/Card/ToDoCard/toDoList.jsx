@@ -9,17 +9,17 @@ function ToDoList() {
   const [toDoList, setToDoList] = useState([]);
 
   // Grabs all the TODOs on page load
-  useEffect(() =>{
-    if (toDoList.length === 0)
-    {
-      const fillToDoList = async() => {
-        const allToDos = await getAllToDos();
-        setToDoList(allToDos);
-        console.log("STARTER TODO LIST", allToDos); 
-      }
-      fillToDoList();
-    }
-  }, []);
+  // useEffect(() =>{
+  //   if (toDoList.length === 0)
+  //   {
+  //     const fillToDoList = async() => {
+  //       const allToDos = await getAllToDos();
+  //       setToDoList(allToDos);
+  //       console.log("STARTER TODO LIST", allToDos); 
+  //     }
+  //     fillToDoList();
+  //   }
+  // }, []);
 
   // Function to mark bucket list item as complete
   const completeToDoItem = (id) => {
