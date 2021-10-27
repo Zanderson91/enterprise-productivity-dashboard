@@ -14,6 +14,7 @@ import SignUp from "./Pages/Register/register";
 import SignInSide from "./Pages/Login/login";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
+import BurgerIcon from "./components/Sidebar/sidebar"
 
 
 const client = new ApolloClient({

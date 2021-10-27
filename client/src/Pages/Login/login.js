@@ -62,7 +62,6 @@ export default function SignInSide() {
       }
 
       setUserFormData({
-        username: '',
         email: '',
         password: '',
       });
