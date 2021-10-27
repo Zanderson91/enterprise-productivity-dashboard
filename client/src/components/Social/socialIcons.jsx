@@ -3,9 +3,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Apps from "@material-ui/icons/Apps";
 import { Row, Item } from "@mui-treasury/components/flex";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
 import { useGrowIconButtonStyles } from "@mui-treasury/styles/iconButton/grow";
 import { useSizedIconButtonStyles } from "@mui-treasury/styles/iconButton/sized";
+import "./social.css"
 
 export const GrowIconButtonStyle = React.memo(function GrowIconButton() {
   const largeStyles = useSizedIconButtonStyles({ childSize: 64, padding: 12 });

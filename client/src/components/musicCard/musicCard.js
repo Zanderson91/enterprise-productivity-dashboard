@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
-import './music.css'
+import "./music.css"
 
 export function MediaControlCard() {
   const theme = useTheme();

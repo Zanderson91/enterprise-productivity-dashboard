@@ -36,11 +36,12 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <Navbar />
+        
         <div className="App">
           <div className="container">
             <Switch>
               <Route exact path="/">
-                <Sidebar />
+                
                 <Homepage />
               </Route>
               <Route path="/register">

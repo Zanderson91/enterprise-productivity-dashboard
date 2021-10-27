@@ -22,7 +22,6 @@ export default function Homepage() {
         <SubComponentsPickers className="subComponent" />
         <SolidGameCardDemo className="game" />
       </div>
-      <GrowIconButtonStyle />
     </div>
   );
 }
