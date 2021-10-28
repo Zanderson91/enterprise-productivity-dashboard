@@ -21,17 +21,6 @@ function ToDoList() {
   //   }
   // }, []);
 
-  // Function to mark bucket list item as complete
-  const completeToDoItem = (id) => {
-    // If the ID passed to this function matches the ID of the item that was clicked, mark it as complete
-    let updatedToDoList = toDoList.map((item) => {
-      if (item.id === id) { item.isComplete = !item.isComplete; }
-      return item;
-    });
-    //console.log("COMPLETE TODO ITEM:", updatedToDoList);
-    setToDoList(updatedToDoList);
-  };
-
   return (
     <div className="cardItem bucket-app">
       <h1>What is on your To Do list?</h1>
@@ -41,7 +30,6 @@ function ToDoList() {
       <ToDo
         toDoList={toDoList}
         setToDoList={setToDoList}
-        completeToDoItem={completeToDoItem}
       ></ToDo>
     </div>
   );
