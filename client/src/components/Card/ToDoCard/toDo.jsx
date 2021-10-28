@@ -54,6 +54,17 @@ function ToDo({ toDoList, setToDoList }) {
     setItemID(id);
   };
 
+  const handleIsComplete = (item) => {
+    const oppositeValue = item.isComplete === "true" ? "false" : "true";
+    setItemToUpdate({
+      id: item.id,
+      text: item.text,
+      eagerness: item.eagerness,
+      isComplete: oppositeValue
+    });
+    setIsCompleteClickState(true);
+  };
+
   if (edit.id) {
     return <ToDoForm edit={edit} setEdit={setEdit} />;
   }
