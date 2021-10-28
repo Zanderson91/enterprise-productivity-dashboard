@@ -66,19 +66,21 @@ function ToDo({ toDoList, setToDoList }) {
   };
 
   if (edit.id) {
-    return <ToDoForm edit={edit} setEdit={setEdit} />;
+    return <ToDoForm edit={edit} setEdit={setEdit} setToDoList={setToDoList} />;
   }
+
+  toDoList.map((item, i) => (console.log(item, i)));
 
   return toDoList.map((item, i) => (
     <div
       className={
-        item.isComplete
+        item.isComplete === "true"
           ? `bucket-row complete ${item.eagerness}`
           : `bucket-row ${item.eagerness}`
       }
       key={i}
     >      
-      <div key={item.id} onClick={() => completeTodoItem(item.id)}>
+      <div key={item.id} onClick={() => handleIsComplete(item)}>
         {item.text}
       </div>
       <div className="icons">
