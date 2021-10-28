@@ -87,7 +87,15 @@ export default function SignInSide() {
               backgroundPosition: "center",
             }}
           />
-          <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={5}
+            component={Paper}
+            elevation={6}
+            square
+          >
             <Box
               sx={{
                 my: 8,
@@ -118,6 +126,8 @@ export default function SignInSide() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  onChange={handleInputChange}
+                  value={userFormData.email}
                 />
                 <TextField
                   margin="normal"
@@ -128,6 +138,8 @@ export default function SignInSide() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={handleInputChange}
+                  value={userFormData.password}
                 />
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}

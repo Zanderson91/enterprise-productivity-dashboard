@@ -43,7 +43,8 @@ const SignupForm = () => {
   const [addUser] = useMutation(ADD_USER);
   // set initial form state
   const [userFormData, setUserFormData] = useState({
-    username: "",
+    firstName: "",
+    lastName:"",
     email: "",
     password: "",
   });
@@ -57,13 +58,6 @@ const SignupForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    //   const data = new FormData(event.currentTarget);
-    //   // eslint-disable-next-line no-console
-    //   console.log({
-    //     email: data.get("email"),
-    //     password: data.get("password"),
-    //   });
-    // };
     try {
       const { data } = await addUser({
         variables: { ...userFormData },
@@ -117,6 +111,7 @@ const SignupForm = () => {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  value={userFormData.firstName}
                   onChange={(e) => {
                     setUserFormData({
                       ...userFormData,
@@ -133,6 +128,7 @@ const SignupForm = () => {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  value={userFormData.lastName}
                   onChange={(e) => {
                     setUserFormData({
                       ...userFormData,
@@ -149,6 +145,7 @@ const SignupForm = () => {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  value={userFormData.email}
                   onChange={(e) => {
                     setUserFormData({
                       ...userFormData,
@@ -166,6 +163,7 @@ const SignupForm = () => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  value={userFormData.password}
                   onChange={(e) => {
                     setUserFormData({
                       ...userFormData,
