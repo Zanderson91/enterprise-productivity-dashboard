@@ -1,72 +1,65 @@
 import React, { useState, useEffect } from 'react';
-import { createToDo, getAllToDos } from "../../../utils/toDoAPI";
+import { createToDo, getAllToDos, updateToDo } from "../../../utils/toDoAPI";
 import "./toDo.css";
 
 function ToDoForm({ setToDoList, edit, setEdit }) {
-  const [input, setInput] = useState('');
-  let [eagerness, setEagerness] = useState('');
+  const [input, setInput] = useState("");
+  const [eagerness, setEagerness] = useState("");
   const [toDoItem, setToDoItem] = useState({
     id: null,
     text: "",
-    eagerness: ""
+    eagerness: "",
+    isComplete: "false"
   });
-
   const [addBtnIsClicked, setAddBtnIsClicked] = useState(false);
   const [editBtnIsClicked, setEditBtnIsClicked] = useState(false);
-
-  const eagernessLevel = ['high', 'medium', 'low']
-
-  /*
-    Object { _id: "617765001530ee8ddcc44fc6", id: 0.42263534701920225, text: "together", eagerness: "low", __v: 0 }
-        _id: "617765001530ee8ddcc44fc6"
-        eagerness: "low"
-        id: 0.42263534701920225
-        text: "together"
-  */ 
+  const eagernessLevel = ["high", "medium", "low"]
 
   useEffect(() => {
     if (addBtnIsClicked) {
       const addToDoItem = async() => {
-        console.log("YOU ARE AT CREATE TODO");
         await createToDo(toDoItem);
         const allToDos = await getAllToDos();
         setToDoList(allToDos);
-        console.log(`TODO LIST AFTER ADDING ${toDoItem.text}`, allToDos);        
       }
       addToDoItem();
       setAddBtnIsClicked(false);
     }
-  },[addBtnIsClicked])
+  },[addBtnIsClicked, toDoItem])
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!eagerness) {
-      eagerness = 'low';
+  useEffect(() => {
+    if (editBtnIsClicked) {
+      const editToDoItem = async() => {
+        const item = {
+          id: edit.id,
+          text: toDoItem.text,
+          eagerness: toDoItem.eagerness,
+          isComplete: toDoItem.isComplete 
+        }
+        await updateToDo(item);
+        const allToDos = await getAllToDos();
+        setToDoList(allToDos);
+        setEdit({ id: null, value: '', eagerness: '' });               
+      }
+      editToDoItem();      
+      setEditBtnIsClicked(false);
     }
+  },[editBtnIsClicked]);
+
+  const handleAddToDo = (e) => {
+    e.preventDefault();
+    let newEagerness = !eagerness ? "low" : eagerness;
     setToDoItem({
       id: Math.random(Math.floor() * 1000),
       text: input,
-      eagerness: eagerness,      
-    });
+      eagerness: newEagerness,
+      isComplete: "false"    
+    })
     setAddBtnIsClicked(true);    
     setInput('');
     setEagerness('');
   };
 
-  useEffect(() => {
-    if (editBtnIsClicked) {
-      const EI = async() => {
-        //await removeToDo(itemID);
-        //const allToDos = await getAllToDos();
-        //props.setToDoList(allToDos);
-        //console.log(`TODO LIST AFTER REMOVING ${itemID}`, allToDos); 
-        console.log("INSIDE EDIT USE EFFECT");       
-      }
-      EI();      
-      setEditBtnIsClicked(false);
-      setEdit({ id: null, value: '', eagerness: '' });
-    }
-  },[editBtnIsClicked]);
 
   const handleEdit = (e) => {
     e.preventDefault();
