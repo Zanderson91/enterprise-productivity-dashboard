@@ -35,7 +35,7 @@ export const GrowIconButtonStyle = React.memo(function GrowIconButton() {
         </a>
       </Item>
       <Item>
-        <Link to={{ pathname: "https://facebook.com" }}>
+        <a target="_blank" href={ "https://facebook.com" }>
           <IconButton
             classes={largeStyles}
             className={customGrowStyles.root}
@@ -48,10 +48,10 @@ export const GrowIconButtonStyle = React.memo(function GrowIconButton() {
               }
             />
           </IconButton>
-        </Link>
+        </a>
       </Item>
       <Item>
-        <Link to={{ pathname: "https://twitter.com" }}>
+        <a target="_blank" href={ "https://twitter.com" }>
           <IconButton
             classes={largeStyles}
             className={customGrowStyles.root}
@@ -64,7 +64,7 @@ export const GrowIconButtonStyle = React.memo(function GrowIconButton() {
               }
             />
           </IconButton>
-        </Link>
+        </a>
       </Item>
     </Row>
   );
