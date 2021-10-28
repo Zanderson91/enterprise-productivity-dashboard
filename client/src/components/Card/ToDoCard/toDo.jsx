@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import ToDoForm from './toDoForm';
-import { getAllToDos, removeToDo } from "../../../utils/toDoAPI";
+import { getAllToDos, removeToDo, updateToDo } from "../../../utils/toDoAPI";
 import "./toDo.css";
 
-function ToDo({ toDoList, setToDoList, completeTodoItem }) {
+function ToDo({ toDoList, setToDoList }) {
   const [edit, setEdit] = useState({
     id: null,
     value: '',
     eagerness: '',
   });
+  const [itemToUpdate, setItemToUpdate] = useState({
+    id: null,
+    text: "",
+    eagerness: "",
+    isComplete: "",
+  });
   const [itemID, setItemID] = useState(0);
   const [removeClickState, setRemoveClickState] = useState(false);
-
-  //console.log("THE TODOLIST", toDoList);
+  const [isCompleteClickState, setIsCompleteClickState] = useState(false);
 
   useEffect(() => {
     if (removeClickState) {
@@ -20,12 +25,29 @@ function ToDo({ toDoList, setToDoList, completeTodoItem }) {
         await removeToDo(itemID);
         const allToDos = await getAllToDos();
         setToDoList(allToDos);
-        console.log(`TODO LIST AFTER REMOVING ${itemID}`, allToDos);        
       }
       removeToDoItem();
       setRemoveClickState(false);
     }
-  },[removeClickState]);  
+  },[removeClickState]); 
+  
+  useEffect(() => {
+    if (isCompleteClickState) {
+      const CI = async() => {
+        const item = {
+          id: itemToUpdate.id,
+          text: itemToUpdate.text,
+          eagerness: itemToUpdate.eagerness,
+          isComplete: itemToUpdate.isComplete
+        };
+        await updateToDo(item);
+        const allToDos = await getAllToDos();
+        setToDoList(allToDos);        
+      }
+      CI();
+      setIsCompleteClickState(false);
+    }
+  },[isCompleteClickState]); 
 
   const handleRemove = (id) => {
     setRemoveClickState(true);
