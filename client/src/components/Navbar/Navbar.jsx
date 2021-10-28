@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import "./navbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
 import Sidebar from "../Sidebar/sidebar"
+import { Redirect } from "react-router-dom"
+import { Button } from "semantic-ui-react"
+import Logout from "../Logout/Logout"
+
 
 export default function Navbar() {
   return (
@@ -13,6 +17,7 @@ export default function Navbar() {
         </div>
         <div className="topRight">
           <div className="navbarIcon">
+            <Logout />
             <NotificationsNone />
             <span className="topIconNotif">2</span>
           </div>
