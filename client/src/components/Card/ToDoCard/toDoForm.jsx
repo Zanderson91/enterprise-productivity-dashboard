@@ -60,40 +60,28 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
     setEagerness('');
   };
 
-
-  const handleEdit = (e) => {
+  const handleEditToDo = (e) => {
     e.preventDefault();
-
-    console.log("INSIDE IN FORM HANDLE EDIT");
-    console.log("BEFORE VALUES", edit);
-
-    if (!eagerness) { setEagerness(edit.eagerness) };
-    if (!input) { setInput(edit.value) };
-
-    const item = {
-      id: 23,
-      text: "Dummy Item",
-      eagerness: "VERY HIGH"
-    };
-
-    setToDoItem(item);
-
-    console.log("AFTER VALUES", toDoItem);
-
-    // setAddBtnIsClicked(true);    
-    // setInput('');
-    // setEagerness('');
+    const newEagerness = !eagerness ? edit.eagerness : eagerness;
+    const newInput = !input ? edit.value : input;
+    setToDoItem({
+      id: Math.random(Math.floor() * 1000),
+      text: newInput,
+      eagerness: newEagerness,
+      isComplete: "false"      
+    })
+    setEditBtnIsClicked(true);
+    setInput('');
+    setEagerness('');    
   };
 
   const handleChange = (e) => {
     setInput(e.target.value);
   };
 
-  // First we check to see if "edit" prop exists. If not, we render the normal form
-  // If the prop "edit" exists, we know to render the update form instead
   return !edit ? (
     <div>
-      <form className="bucket-form" onSubmit={handleSubmit}>
+      <form className="bucket-form" onSubmit={handleAddToDo}>
         <input
           type="text"
           placeholder="Add to your bucket list"
@@ -118,7 +106,7 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
   ) : (
     <div>
       <h3>Update entry: {edit.value}</h3>
-      <form className="bucket-form" onSubmit={handleEdit}>
+      <form className="bucket-form" onSubmit={handleEditToDo}>
         <input
           type="text"
           placeholder={edit.value}
