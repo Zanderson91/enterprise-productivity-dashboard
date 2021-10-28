@@ -13,6 +13,9 @@ const toDoSchema = Schema(
         eagerness: {
             type: String
         },
+        isComplete: {
+            type: String
+        },
     }
 );
 
