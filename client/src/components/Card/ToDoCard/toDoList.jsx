@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import ToDoForm from "./toDoForm";
 import ToDo from "./toDo";
-import { getAllToDos } from "../../../utils/toDoAPI";
+//import { getAllToDos } from "../../../utils/toDoAPI";
+import { QUERY_GET_TODOS } from '../../../utils/queries';
+import { useQuery } from "@apollo/react-hooks";
 import "./toDo.css";
 
 function ToDoList() {
   //todoList is an array of objects
   const [toDoList, setToDoList] = useState([]);
+  const {loading, error, data } = useQuery(QUERY_GET_TODOS);
+  
+  //console.log(data);
+  //console.log(data.toDos)
+  /*
+      Object { toDos: (1) […] }​
+          toDos: Array [ {…} ]​​
+              0: Object { toDoId: 2, text: "Silver ain't bad", eagerness: "medium", … }
+  */
+
+  //setToDoList(data.toDos);
 
   // Grabs all the TODOs on page load
   // useEffect(() =>{
@@ -30,7 +43,7 @@ function ToDoList() {
       <ToDo
         toDoList={toDoList}
         setToDoList={setToDoList}
-      ></ToDo>
+      />
     </div>
   );
 }
