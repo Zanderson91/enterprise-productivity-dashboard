@@ -18,7 +18,7 @@ async function startServer() {
   apolloServer.applyMiddleware({ app });
     console.log("graphql", apolloServer.graphqlPath);
 }
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
 // if we're in production, serve client/build as static assets
 // if (process.env.NODE_ENV === "production") {

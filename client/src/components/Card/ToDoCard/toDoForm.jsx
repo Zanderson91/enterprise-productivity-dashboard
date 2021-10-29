@@ -18,7 +18,6 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
   useEffect(() => {
     if (addBtnIsClicked) {
       const addToDoItem = async() => {
-        console.log(toDoItem)
         await createToDo(toDoItem);
         const allToDos = await getAllToDos();
         setToDoList(allToDos);
@@ -31,16 +30,16 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
   useEffect(() => {
     if (editBtnIsClicked) {
       const editToDoItem = async() => {
-        // const item = {
-        //   id: edit.id,
-        //   text: toDoItem.text,
-        //   eagerness: toDoItem.eagerness,
-        //   isComplete: toDoItem.isComplete 
-        // }
-        // await updateToDo(item);
-        // const allToDos = await getAllToDos();
-        // setToDoList(allToDos);
-        // setEdit({ id: null, value: '', eagerness: '' });               
+        const item = {
+          id: edit.id,
+          text: toDoItem.text,
+          eagerness: toDoItem.eagerness,
+          isComplete: toDoItem.isComplete 
+        }
+        await updateToDo(item);
+        const allToDos = await getAllToDos();
+        setToDoList(allToDos);
+        setEdit({ id: null, value: '', eagerness: '' });               
       }
       editToDoItem();      
       setEditBtnIsClicked(false);

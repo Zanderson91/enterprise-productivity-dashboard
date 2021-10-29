@@ -22,9 +22,9 @@ function ToDo({ toDoList, setToDoList }) {
   useEffect(() => {
     if (removeClickState) {
       const removeToDoItem = async() => {
-        // await removeToDo(itemID);
-        // const allToDos = await getAllToDos();
-        // setToDoList(allToDos);
+        await removeToDo(itemID);
+        const allToDos = await getAllToDos();
+        setToDoList(allToDos);
       }
       removeToDoItem();
       setRemoveClickState(false);
@@ -34,15 +34,15 @@ function ToDo({ toDoList, setToDoList }) {
   useEffect(() => {
     if (isCompleteClickState) {
       const CI = async() => {
-        // const item = {
-        //   id: itemToUpdate.id,
-        //   text: itemToUpdate.text,
-        //   eagerness: itemToUpdate.eagerness,
-        //   isComplete: itemToUpdate.isComplete
-        // };
-        // await updateToDo(item);
-        // const allToDos = await getAllToDos();
-        // setToDoList(allToDos);        
+        const item = {
+          id: itemToUpdate.id,
+          text: itemToUpdate.text,
+          eagerness: itemToUpdate.eagerness,
+          isComplete: itemToUpdate.isComplete
+        };
+        await updateToDo(item);
+        const allToDos = await getAllToDos();
+        setToDoList(allToDos);        
       }
       CI();
       setIsCompleteClickState(false);
