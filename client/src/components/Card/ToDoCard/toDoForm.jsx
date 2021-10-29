@@ -1,47 +1,28 @@
-import React, { useState, useEffect } from 'react';
-//import { createToDo, getAllToDos, updateToDo } from "../../../utils/toDoAPI";
-//import { CREATE_TODO } from "../../../utils/toDo-mutations";
+import React, { useState } from 'react';
 import { CREATE_TODO, UPDATE_TODO } from '../../../utils/mutations';
 import { QUERY_GET_TODOS } from '../../../utils/queries';
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import "./toDo.css";
-import { AllInclusiveOutlined } from '@material-ui/icons';
-
-
 
 function ToDoForm({ setToDoList, edit, setEdit }) {
-  const [toDoId, setToDoId] = useState(Math.random(Math.floor() * 1000));
   const [input, setInput] = useState("");
   const [eagerness, setEagerness] = useState("");
-  const [isComplete, setIsComplete] = useState("false");
-  const [toDoItem, setToDoItem] = useState({
-    toDoId: null,
-    text: "",
-    eagerness: "",
-    isComplete: "false"
-  });
-  const [addBtnIsClicked, setAddBtnIsClicked] = useState(false);
-  const [editBtnIsClicked, setEditBtnIsClicked] = useState(false);
+ 
   const eagernessLevel = ["high", "medium", "low"]
   const { data, loading, refetch} = useQuery(QUERY_GET_TODOS);
   const [createToDo] = useMutation(CREATE_TODO);
   const [updateToDo] = useMutation(UPDATE_TODO);
-  const [formState, setFormState] = useState({
-    id: 0,
-    text: "",
-    eagerness: "",
-    isComplete: ""
-  });
 
   const handleCreateToDo = async(event) => {
     event.preventDefault();
     try
     {
       let newEagerness = !eagerness ? "low" : eagerness;
+      console.log(input, newEagerness, isComplete )
       const { data }  = await createToDo({
         variables: { text: input, eagerness: newEagerness, isComplete: isComplete } 
-      });      
-      const item = data.createToDo;   // Has _id, text, eagerness, isComplete
+      });    
+      const item = data.createToDo;
       const refetchData = await refetch();
       const toDoList = refetchData.data.toDos;
       setInput('');
@@ -62,6 +43,7 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
         variables: { id: edit.id, text: newInput, eagerness: newEagerness, isComplete: edit.isComplete } 
       });       
       const refetchData = await refetch();
+      console.log("TODOLIST", toDoList)
       const toDoList = refetchData.data.toDos;
       setToDoList(toDoList);
       setEdit({ id: null, value: '', eagerness: '', isComplete: '' });  
@@ -69,60 +51,9 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
     catch (err) { console.log(err); }
   }
 
-
-
-
-
-
-
-
-  // useEffect(() => {
-  //   if (editBtnIsClicked) {
-  //     const editToDoItem = async() => {
-  //       // const item = {
-  //       //   id: edit.id,
-  //       //   text: toDoItem.text,
-  //       //   eagerness: toDoItem.eagerness,
-  //       //   isComplete: toDoItem.isComplete 
-  //       // }
-  //       // await updateToDo(item);
-  //       // const allToDos = await getAllToDos();
-  //       // setToDoList(allToDos);
-  //       // setEdit({ id: null, value: '', eagerness: '' });               
-  //     }
-  //     editToDoItem();      
-  //     setEditBtnIsClicked(false);
-  //   }
-  // },[editBtnIsClicked]);
-
-  // const handleEditToDo = (e) => {
-  //   e.preventDefault();
-  //   const newEagerness = !eagerness ? edit.eagerness : eagerness;
-  //   const newInput = !input ? edit.value : input;
-  //   setToDoItem({
-  //     id: Math.random(Math.floor() * 1000),
-  //     text: newInput,
-  //     eagerness: newEagerness,
-  //     isComplete: "false"      
-  //   })
-  //   setEditBtnIsClicked(true);
-  //   setInput('');
-  //   setEagerness('');    
-  // };
-
   const handleChange = (e) => {
     setInput(e.target.value);
   };
-
-
-
-
-  
-
-
-
-
-
 
   return !edit ? (
     <div>

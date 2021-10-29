@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, ToDo } = require("../models");
 const { signToken } = require("../utils/auth");
 const { AuthenticationError } = require("apollo-server-express");
 
@@ -14,6 +14,17 @@ const resolvers = {
       }
 
       throw new AuthenticationError("Not logged in");
+    },
+
+    toDos: async (parent, args, context, info) => {
+      try {
+        const allToDos = await ToDo.find({});
+        if (!allToDos) {
+          throw new AuthenticationError("Unable to find all the todos");
+        }
+        return allToDos;
+      }
+      catch (err) { console.log(err) }
     },
   },
 
@@ -42,9 +53,10 @@ const resolvers = {
 
       return { token, user };
     },
-    
+
     createToDo: async (parent, { text, eagerness, isComplete }, context, info) => {
       try {
+        
         const input = {
           text: text,
           eagerness: eagerness,
