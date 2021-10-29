@@ -3,14 +3,12 @@
 }
 
 .subComponent {
-    flex: 2;
     display: flex;
     position: relative;
     flex-direction: row !important;
 }
 
 .game {
-    flex: 3;
     display: flex;
     position: relative;
     flex-direction: row !important;

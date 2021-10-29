@@ -18,14 +18,14 @@ export function MediaControlCard() {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5">
-            Live From Space
+            Shivers
           </Typography>
           <Typography
             variant="subtitle1"
             color="text.secondary"
             component="div"
           >
-            Mac Miller
+            Ed Sheeran
           </Typography>
         </CardContent>
         <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
@@ -50,8 +50,8 @@ export function MediaControlCard() {
       </Box>
       <CardMedia
         component="img"
-        sx={{ width: 100 }}
-        image="https://source.unsplash.com/random"
+        sx={{ width: 400 }}
+        image="https://i.ytimg.com/vi/z2_Lrg6rRks/maxresdefault.jpg"
         alt="Your Favorite Music"
       />
     </Card>

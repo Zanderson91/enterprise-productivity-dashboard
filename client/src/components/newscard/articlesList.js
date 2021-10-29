@@ -43,4 +43,6 @@ export const ArticleList = (props) => {
   );
 };
 
+export default ArticleList;
+
 

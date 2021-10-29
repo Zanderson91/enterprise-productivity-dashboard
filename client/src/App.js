@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar/Navbar";
+
 import Sidebar from "./components/Sidebar/sidebar";
 import "./app.css";
 import Homepage from "./Pages/Home/homepage";
@@ -38,7 +38,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Navbar />
         <div className="App">
           <div className="container">
             <Switch>
