@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid, Header, Image, List } from "semantic-ui-react";
+import "./articleapp"
 
 const ArticleItem = (props) => {
   const { article } = props;
@@ -33,14 +34,16 @@ const ArticleItem = (props) => {
   );
 };
 
-export const ArticleList = (props) => {
+const ArticleList = (props) => {
   return (
     <List divided style={{ maxWidth: 900, margin: "0 auto" }}>
-          {props.articles.map((article, index) => (
+      {props.articles.map((article, index) => (
         <ArticleItem article={article} key={article.title + index} />
       ))}
     </List>
   );
 };
+
+export default ArticleList;
 
 

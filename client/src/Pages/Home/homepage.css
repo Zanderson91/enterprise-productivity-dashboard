@@ -3,14 +3,12 @@
 }
 
 .subComponent {
-    flex: 3;
     display: flex;
     position: relative;
     flex-direction: row !important;
 }
 
 .game {
-    flex: 3;
     display: flex;
     position: relative;
     flex-direction: row !important;
@@ -25,4 +23,8 @@
 .MuiGrid-spacing-xs-3 {
     margin: 10px 10px 0px !important;
     align-items: center;
+}
+
+.friends {
+    
 }
