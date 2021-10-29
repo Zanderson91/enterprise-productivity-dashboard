@@ -3,6 +3,7 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as RiIcons from "react-icons/ri";
+import {ToDo} from "../toDoCard/toDoCard"
 
 
 export const SidebarData = [
@@ -15,7 +16,7 @@ export const SidebarData = [
   },
   {
     title: "To-Do",
-    path: "/to-do",
+    path: "/ToDoList",
     icon: <IoIcons.IoIosPaper />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

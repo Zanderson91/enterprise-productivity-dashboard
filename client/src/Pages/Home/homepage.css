@@ -3,7 +3,7 @@
 }
 
 .subComponent {
-    flex: 3;
+    flex: 2;
     display: flex;
     position: relative;
     flex-direction: row !important;

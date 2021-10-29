@@ -7,14 +7,13 @@ import { SubComponentsPickers } from "../../components/Calendar/calendar"
 import { SolidGameCardDemo } from "../../components/GamingCard/gamingCard"
 import { GrowIconButtonStyle } from "../../components/Social/socialIcons"
 
-
 export default function Homepage() {
   return (
     <div className="homepage">
       <Card />
       <Graph
         data={userData}
-        title="Utilizing Props to change title!"
+        title="A Live Look at your energy Usage!"
         grid
         dataKey="name"
       />

@@ -9,12 +9,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
-// import Sidebar from "./components/Sidebar1/Sidebar1";
 import SignUp from "./Pages/Register/register";
 import SignInSide from "./Pages/Login/login";
 import { ApolloProvider } from "@apollo/react-hooks";
 import ApolloClient from "apollo-boost";
-import BurgerIcon from "./components/Sidebar/sidebar"
+import  ToDoList from "./components/Card/ToDoCard/toDoList";
+import { getBitcoinArticles } from "../src/api";
+
+
 
 
 const client = new ApolloClient({
@@ -32,15 +34,15 @@ const client = new ApolloClient({
 
 
 function App() {
+  getBitcoinArticles();
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Navbar />       
+        <Navbar />
         <div className="App">
           <div className="container">
             <Switch>
               <Route exact path="/">
-                
                 <Homepage />
               </Route>
               <Route path="/register">
@@ -49,7 +51,11 @@ function App() {
               <Route path="/login">
                 <SignInSide />
               </Route>
+              <Route path="/ToDoList">
+                <ToDoList />
+              </Route>
             </Switch>
+            
           </div>
         </div>
       </Router>
