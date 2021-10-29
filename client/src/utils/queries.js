@@ -10,3 +10,14 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const QUERY_GET_TODOS = gql` 
+  query getToDos {
+    toDos {
+      _id
+      text
+      eagerness
+      isComplete
+    }
+  } 
+`;
