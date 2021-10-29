@@ -25,7 +25,6 @@ export default function Homepage() {
         <SubComponentsPickers className="subComponent" />
         <SolidGameCardDemo className="game" />
       </div>
-      {/* <ArticleList / > */}
     </div>
   );
 }
