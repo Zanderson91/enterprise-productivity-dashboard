@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ToDoForm from './toDoForm';
-import { getAllToDos, removeToDo, updateToDo } from "../../../utils/toDoAPI";
+//import { getAllToDos, removeToDo, updateToDo } from "../../../utils/toDoAPI";
+import { REMOVE_TODO, UPDATE_TODO } from '../../../utils/mutations';
+import { QUERY_GET_TODOS } from '../../../utils/queries';
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import "./toDo.css";
 
 function ToDo({ toDoList, setToDoList }) {
@@ -8,6 +11,7 @@ function ToDo({ toDoList, setToDoList }) {
     id: null,
     value: '',
     eagerness: '',
+    isComplete: ''
   });
   const [itemToUpdate, setItemToUpdate] = useState({
     id: null,
@@ -19,51 +23,37 @@ function ToDo({ toDoList, setToDoList }) {
   const [removeClickState, setRemoveClickState] = useState(false);
   const [isCompleteClickState, setIsCompleteClickState] = useState(false);
 
-  useEffect(() => {
-    if (removeClickState) {
-      const removeToDoItem = async() => {
-        await removeToDo(itemID);
-        const allToDos = await getAllToDos();
-        setToDoList(allToDos);
-      }
-      removeToDoItem();
-      setRemoveClickState(false);
-    }
-  },[removeClickState]); 
+  const { data, loading, refetch} = useQuery(QUERY_GET_TODOS);
+  const [removeToDo] = useMutation(REMOVE_TODO);
+  const [updateToDo] = useMutation(UPDATE_TODO);
   
-  useEffect(() => {
-    if (isCompleteClickState) {
-      const CI = async() => {
-        const item = {
-          id: itemToUpdate.id,
-          text: itemToUpdate.text,
-          eagerness: itemToUpdate.eagerness,
-          isComplete: itemToUpdate.isComplete
-        };
-        await updateToDo(item);
-        const allToDos = await getAllToDos();
-        setToDoList(allToDos);        
-      }
-      CI();
-      setIsCompleteClickState(false);
+  const handleIsComplete = async(item) => {
+    const { _id, text, eagerness, isComplete } = item;
+    const oppositeValue = isComplete === "true" ? "false" : "true";
+    try
+    {
+      const { data }  = await updateToDo({
+        variables: { _id: _id, text: text, eagerness: eagerness, isComplete: oppositeValue } 
+      });       
+      const refetchData = await refetch();
+      const toDoList = refetchData.data.toDos;
+      setToDoList(toDoList);
     }
-  },[isCompleteClickState]); 
+    catch (err) { console.log(err); }
+  }
 
-  const handleRemove = (id) => {
-    setRemoveClickState(true);
-    setItemID(id);
-  };
-
-  const handleIsComplete = (item) => {
-    const oppositeValue = item.isComplete === "true" ? "false" : "true";
-    setItemToUpdate({
-      id: item.id,
-      text: item.text,
-      eagerness: item.eagerness,
-      isComplete: oppositeValue
-    });
-    setIsCompleteClickState(true);
-  };
+  const handleRemoveToDo = async(_id) => {
+    try
+    {
+      const { data }  = await removeToDo({
+        variables: { _id } 
+      });      
+      const refetchData = await refetch();
+      const toDoList = refetchData.data.toDos;
+      setToDoList(toDoList);      
+    }
+    catch (err) { console.log(err); }
+  }
 
   if (edit.id) {
     return <ToDoForm edit={edit} setEdit={setEdit} setToDoList={setToDoList} />;
@@ -80,12 +70,12 @@ function ToDo({ toDoList, setToDoList }) {
       }
       key={i}
     >      
-      <div key={item.id} onClick={() => handleIsComplete(item)}>
+      <div key={item._id} onClick={() => handleIsComplete(item)}>
         {item.text}
       </div>
       <div className="icons">
-        <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}> ✏️</p>
-        <p onClick={() => handleRemove(item.id)}> 🗑️</p>
+        <p onClick={() => setEdit({ id: item._id, value: item.text, eagerness: item.eagerness, isComplete: item.isComplete })}> ✏️</p>
+        <p onClick={() => handleRemoveToDo(item._id)}> 🗑️</p>
       </div>
     </div>
   ));
