@@ -2,13 +2,8 @@ const { Schema, model } = require("mongoose")
 
 const toDoSchema = Schema(
     {
-        id: {
-            type: Number,
-            required: true,
-        },
         text: {
             type: String,
-            required: true,
         },
         eagerness: {
             type: String
