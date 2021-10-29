@@ -35,3 +35,35 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const CREATE_TODO = gql`
+  mutation createToDo($text: String, $eagerness: String, $isComplete: String) {
+    createToDo(text: $text, eagerness: $eagerness, isComplete: $isComplete) {
+      _id
+      text
+      eagerness
+      isComplete
+    }
+  }
+`;
+
+export const UPDATE_TODO = gql`
+  mutation updateToDo($_id: ID, $text: String, $eagerness: String, $isComplete: String) {
+    updateToDo(_id: $_id, text: $text, eagerness: $eagerness, isComplete: $isComplete) {
+      _id
+      text
+      eagerness
+      isComplete
+    }
+  }
+`;
+
+export const REMOVE_TODO = gql`
+  mutation removeToDo($_id: ID!) {
+    removeToDo(_id: $_id) {
+      text
+      eagerness
+      isComplete  
+    }
+  }
+`;
