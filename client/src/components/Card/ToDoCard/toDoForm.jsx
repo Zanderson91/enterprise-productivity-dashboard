@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { createToDo, getAllToDos, updateToDo } from "../../../utils/toDoAPI";
+//import { createToDo, getAllToDos, updateToDo } from "../../../utils/toDoAPI";
+//import { CREATE_TODO } from "../../../utils/toDo-mutations";
+import { CREATE_TODO, UPDATE_TODO } from '../../../utils/mutations';
+import { QUERY_GET_TODOS } from '../../../utils/queries';
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import "./toDo.css";
+import { AllInclusiveOutlined } from '@material-ui/icons';
+
+
 
 function ToDoForm({ setToDoList, edit, setEdit }) {
+  const [toDoId, setToDoId] = useState(Math.random(Math.floor() * 1000));
   const [input, setInput] = useState("");
   const [eagerness, setEagerness] = useState("");
+  const [isComplete, setIsComplete] = useState("false");
   const [toDoItem, setToDoItem] = useState({
-    id: null,
+    toDoId: null,
     text: "",
     eagerness: "",
     isComplete: "false"
@@ -14,74 +23,110 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
   const [addBtnIsClicked, setAddBtnIsClicked] = useState(false);
   const [editBtnIsClicked, setEditBtnIsClicked] = useState(false);
   const eagernessLevel = ["high", "medium", "low"]
+  const { data, loading, refetch} = useQuery(QUERY_GET_TODOS);
+  const [createToDo] = useMutation(CREATE_TODO);
+  const [updateToDo] = useMutation(UPDATE_TODO);
+  const [formState, setFormState] = useState({
+    id: 0,
+    text: "",
+    eagerness: "",
+    isComplete: ""
+  });
 
-  useEffect(() => {
-    if (addBtnIsClicked) {
-      const addToDoItem = async() => {
-        await createToDo(toDoItem);
-        const allToDos = await getAllToDos();
-        setToDoList(allToDos);
-      }
-      addToDoItem();
-      setAddBtnIsClicked(false);
+  const handleCreateToDo = async(event) => {
+    event.preventDefault();
+    try
+    {
+      let newEagerness = !eagerness ? "low" : eagerness;
+      const { data }  = await createToDo({
+        variables: { text: input, eagerness: newEagerness, isComplete: isComplete } 
+      });      
+      const item = data.createToDo;   // Has _id, text, eagerness, isComplete
+      const refetchData = await refetch();
+      const toDoList = refetchData.data.toDos;
+      setInput('');
+      setEagerness('');
+      setToDoList(toDoList);      
     }
-  },[addBtnIsClicked, toDoItem])
+    catch (err) { console.log(err); }
+  }
 
-  useEffect(() => {
-    if (editBtnIsClicked) {
-      const editToDoItem = async() => {
-        const item = {
-          id: edit.id,
-          text: toDoItem.text,
-          eagerness: toDoItem.eagerness,
-          isComplete: toDoItem.isComplete 
-        }
-        await updateToDo(item);
-        const allToDos = await getAllToDos();
-        setToDoList(allToDos);
-        setEdit({ id: null, value: '', eagerness: '' });               
-      }
-      editToDoItem();      
-      setEditBtnIsClicked(false);
-    }
-  },[editBtnIsClicked]);
-
-  const handleAddToDo = (e) => {
-    e.preventDefault();
-    let newEagerness = !eagerness ? "low" : eagerness;
-    setToDoItem({
-      id: Math.random(Math.floor() * 1000),
-      text: input,
-      eagerness: newEagerness,
-      isComplete: "false"    
-    })
-    setAddBtnIsClicked(true);    
-    setInput('');
-    setEagerness('');
-  };
-
-  const handleEditToDo = (e) => {
+  const handleEditToDo = async(e) => {
     e.preventDefault();
     const newEagerness = !eagerness ? edit.eagerness : eagerness;
     const newInput = !input ? edit.value : input;
-    setToDoItem({
-      id: Math.random(Math.floor() * 1000),
-      text: newInput,
-      eagerness: newEagerness,
-      isComplete: "false"      
-    })
-    setEditBtnIsClicked(true);
-    setInput('');
-    setEagerness('');    
-  };
+    try
+    {
+      console.log(edit.id, newInput, newEagerness, edit.isComplete)
+      const { data }  = await updateToDo({
+        variables: { id: edit.id, text: newInput, eagerness: newEagerness, isComplete: edit.isComplete } 
+      });       
+      const refetchData = await refetch();
+      const toDoList = refetchData.data.toDos;
+      setToDoList(toDoList);
+      setEdit({ id: null, value: '', eagerness: '', isComplete: '' });  
+    }
+    catch (err) { console.log(err); }
+  }
+
+
+
+
+
+
+
+
+  // useEffect(() => {
+  //   if (editBtnIsClicked) {
+  //     const editToDoItem = async() => {
+  //       // const item = {
+  //       //   id: edit.id,
+  //       //   text: toDoItem.text,
+  //       //   eagerness: toDoItem.eagerness,
+  //       //   isComplete: toDoItem.isComplete 
+  //       // }
+  //       // await updateToDo(item);
+  //       // const allToDos = await getAllToDos();
+  //       // setToDoList(allToDos);
+  //       // setEdit({ id: null, value: '', eagerness: '' });               
+  //     }
+  //     editToDoItem();      
+  //     setEditBtnIsClicked(false);
+  //   }
+  // },[editBtnIsClicked]);
+
+  // const handleEditToDo = (e) => {
+  //   e.preventDefault();
+  //   const newEagerness = !eagerness ? edit.eagerness : eagerness;
+  //   const newInput = !input ? edit.value : input;
+  //   setToDoItem({
+  //     id: Math.random(Math.floor() * 1000),
+  //     text: newInput,
+  //     eagerness: newEagerness,
+  //     isComplete: "false"      
+  //   })
+  //   setEditBtnIsClicked(true);
+  //   setInput('');
+  //   setEagerness('');    
+  // };
 
   const handleChange = (e) => {
     setInput(e.target.value);
   };
 
+
+
+
+  
+
+
+
+
+
+
   return !edit ? (
     <div>
-      <form className="bucket-form" onSubmit={handleAddToDo}>
+      <form className="bucket-form" onSubmit={handleCreateToDo}>
         <input
           type="text"
           placeholder="Add to your bucket list"
