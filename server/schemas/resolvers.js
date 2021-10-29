@@ -42,7 +42,54 @@ const resolvers = {
 
       return { token, user };
     },
+    
+    createToDo: async (parent, { text, eagerness, isComplete }, context, info) => {
+      try {
+        const input = {
+          text: text,
+          eagerness: eagerness,
+          isComplete: isComplete
+        }
+        const toDo = await ToDo.create(input);
+        if (!toDo) {
+          throw new AuthenticationError("Unable to create todo");
+        }
+        return toDo;
+      }
+      catch (err) { console.log(err) }
+    },
 
+    updateToDo: async (parent, { _id, text, eagerness, isComplete }, context, info) => {
+      try {
+        const item = {
+          _id: _id,
+          text: text,
+          eagerness: eagerness,
+          isComplete: isComplete,
+        }
+        const updatedToDo = await ToDo.findOneAndUpdate(
+          { _id: _id },
+          { $set: item },
+          { new: true }
+        );
+        if (!updatedToDo) {
+          throw new AuthenticationError("Unable to find todos with this id");
+        }
+        return updatedToDo;
+      }
+      catch (err) { console.log(err); }
+    },
+
+    removeToDo: async (parent, { _id }, context, info) => {
+      try {
+        const toDo = await ToDo.findOneAndDelete({ _id });
+        if (!toDo) {
+          throw new AuthenticationError("Unable to find todos with this id");
+        }
+        return toDo;
+      }
+      catch (err) { console.log(err); }
+    },
   },
 };
 
