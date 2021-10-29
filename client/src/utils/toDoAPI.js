@@ -1,6 +1,7 @@
 // fetch calls calling the routes in server/routes/api/toDo-routes.js
 
 export const createToDo = async (item) => {
+  console.log(item)
   const options = {
     method: 'POST',
     headers: {
