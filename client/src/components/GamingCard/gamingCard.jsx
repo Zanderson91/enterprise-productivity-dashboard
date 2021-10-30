@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import { useFourThreeCardMediaStyles } from "@mui-treasury/styles/cardMedia/fourThree";
+import "../../components/GamingCard/gamingCard.css"
 
 const useGridStyles = makeStyles(({ breakpoints }) => ({
   root: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(() => ({
     },
   },
   card: ({ color }) => ({
-    minWidth: 256,
+    minWidth: 300,
     borderRadius: 16,
     boxShadow: "none",
     "&:hover": {
@@ -40,12 +41,12 @@ const useStyles = makeStyles(() => ({
   content: ({ color }) => {
     return {
       backgroundColor: color,
-      padding: "1rem 1.5rem 1.5rem",
+      padding: "2rem",
     };
   },
   title: {
     fontFamily: "Keania One",
-    fontSize: "2rem",
+    fontSize: "22px",
     color: "#fff",
     textTransform: "uppercase",
   },
@@ -86,42 +87,66 @@ export const SolidGameCardDemo = React.memo(function SolidGameCard() {
     <>
       <Grid classes={gridStyles} container spacing={3} wrap={"nowrap"}>
         <Grid item>
-          <CustomCard
-            classes={styles}
-            title={"Dota 2"}
-            subtitle={"Be a Legend!"}
-            image={
-              "https://steamcdn-a.akamaihd.net/apps/dota2/images/blog/play/dota_heroes.png"
-            }
-          />
+          <a target="_blank" href={"https://www.cinemark.com/movies/dune"}>
+            <CustomCard
+              classes={styles}
+              title={"Dune"}
+              subtitle={
+                "A mythic and emotionally charged hero's journey, Dune tells the story of Paul Atreides..."
+              }
+              image={
+                "https://m.media-amazon.com/images/M/MV5BN2FjNmEyNWMtYzM0ZS00NjIyLTg5YzYtYThlMGVjNzE1OGViXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg"
+              }
+            />
+          </a>
         </Grid>
         <Grid item>
-          <CustomCard
-            classes={styles2}
-            title={"Fortnite"}
-            subtitle={"Time to choose side!"}
-            image={
-              "https://progameguides.com/wp-content/uploads/2019/10/fortnite-outfit-scratch.jpg"
-            }
-          />
+          <a
+            target="_blank"
+            href={"https://www.cinemark.com/movies/venom-let-there-be-carnage"}
+          >
+            <CustomCard
+              classes={styles2}
+              title={"Venom 2"}
+              subtitle={
+                "In the film, Brock struggles to adjust to life as the host of the alien symbiote Venom"
+              }
+              image={
+                "https://images.fandango.com/ImageRenderer/0/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/223021/FND_poster_VenomLetThereBeCarnage_InTheaters.jpg"
+              }
+            />
+          </a>
         </Grid>
         <Grid item>
-          <CustomCard
-            classes={styles3}
-            title={"Overwatch"}
-            subtitle={"What are you waiting?"}
-            image={"https://images5.alphacoders.com/690/thumb-1920-690653.png"}
-          />
+          <a target="_blank" href={"https://www.cinemark.com/movies/eternals"}>
+            <CustomCard
+              classes={styles3}
+              title={"Eternals"}
+              subtitle={
+                "Marvel Studios Eternals features an exciting new team of Super Heroes in the Marvel Cinematic Universe..."
+              }
+              image={
+                "https://amc-theatres-res.cloudinary.com/image/upload/v1565033409/amc-cdn/general/0dcb2ef0-ff5c-4fb1-9d86-7f75498d11e2/AMCPromo_your-guide-to-marvels-eternals.jpg"
+              }
+            />
+          </a>
         </Grid>
         <Grid item>
-          <CustomCard
-            classes={styles4}
-            title={"PUBG"}
-            subtitle={"Are you ready?"}
-            image={
-              "https://www.itp.net/public/styles/full_img_sml/public/images/2019/05/27/44485-pubg_base1.jpg?itok=EF911Xan"
-            }
-          />
+          <a
+            target="_blank"
+            href={"https://www.cinemark.com/movies/no-time-to-die"}
+          >
+            <CustomCard
+              classes={styles4}
+              title={"No Time to Die"}
+              subtitle={
+                "In No Time To Die, Bond has left active service and is enjoying a tranquil life in Jamaica. His peace is short-lived when.."
+              }
+              image={
+                "https://www.007.com/wp-content/uploads/2020/10/NTTD_DIGITAL_1S_BW_FULL_CHARACTER_DC_OV.jpg"
+              }
+            />
+          </a>
         </Grid>
       </Grid>
     </>

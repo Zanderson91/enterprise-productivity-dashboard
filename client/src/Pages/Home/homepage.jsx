@@ -22,8 +22,8 @@ export default function Homepage() {
         dataKey="name"
       />
       <div className="rowContain">
-        <SubComponentsPickers className="subComponent" />
         <SolidGameCardDemo className="game" />
+        <SubComponentsPickers className="subComponent" />
       </div>
     </div>
   );

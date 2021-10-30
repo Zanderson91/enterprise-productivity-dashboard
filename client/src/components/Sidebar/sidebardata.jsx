@@ -23,12 +23,12 @@ export const SidebarData = [
   },
   {
     title: "Messages",
-    path: "/messages",
+    path: "/#",
     icon: <FaIcons.FaCartPlus />,
   },
   {
     title: "NewsFeed",
-    path: "/news",
+    path: "/#",
     icon: <IoIcons.IoMdPeople />,
   },
   {
