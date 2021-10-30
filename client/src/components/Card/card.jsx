@@ -8,10 +8,10 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 export default function Card() {
   return (
     <Router>
-      <div className="card">
-        <WeatherCard />
-        <ToDoList />
-        <div class="music">
+      <div className="card flexbox">
+        <WeatherCard className="left"/>
+        <ToDoList className="center" />
+        <div class="music right">
           <MediaControlCard />
           <GrowIconButtonStyle />
         </div>

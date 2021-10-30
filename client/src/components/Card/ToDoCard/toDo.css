@@ -13,8 +13,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 800px;
-  max-height: 500px;
+  width: 700px;
+  max-height: 400px;
   background: black;
   text-align: center;
   margin: 32px auto;

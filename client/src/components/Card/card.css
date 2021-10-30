@@ -36,3 +36,71 @@
     box-shadow: 0px 9px 12px 1px rgba(0, 0, 0, 0.59);
     border-radius: 10px;
 }
+
+/* .flexbox {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.flexbox>div {
+    text-align: center;
+    padding: 20px 0;
+    margin: 5px;
+}
+
+@media(min-width:1000px) {
+    .flexbox {
+        flex-flow: row wrap;
+    }
+    .flexbox>.left {
+        order: 1;
+        flex: 1;
+    }
+    .flexbox>.right {
+        order: 2;
+        flex: 1;
+    }
+    .flexbox>.center {
+        order: 3;
+        width: 33%;
+    }
+}
+
+@media(min-width:576px) {
+    .flexbox {
+        flex-flow: row wrap;
+    }
+    .flexbox>.left {
+        order: 1;
+        flex: 0.5;
+    }
+    .flexbox>.right {
+        order: 2;
+        flex: 0.5;
+    }
+    .flexbox>.center {
+        order: 3;
+        width: 50%;
+    }
+}
+
+@media(min-width:768px) {
+    .flexbox {
+        flex-flow: row nowrap;
+    }
+    .flexbox>div {
+        width: 33.33% !important;
+    }
+    .flexbox>.left {
+        order: 1;
+    }
+    .flexbox>.center {
+        order: 2;
+    }
+    .flexbox>.right {
+        order: 3;
+    }
+} */

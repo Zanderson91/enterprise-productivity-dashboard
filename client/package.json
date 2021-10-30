@@ -1,5 +1,6 @@
 {
     "proxy": "http://localhost:3001",
+    "homepage": "http://localhost:3000/register",
     "dependencies": {
         "@amcharts/amcharts4": "^4.10.22",
         "@apollo/client": "^3.4.16",
