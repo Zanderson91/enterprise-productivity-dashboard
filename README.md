@@ -5,11 +5,12 @@
 
   # Enterprise Productivity Dashboard
   
+  ![Untitled_ Oct 30, 2021 1_24 PM](https://user-images.githubusercontent.com/81836426/139554927-c377611c-fabb-4feb-87f6-a855e2840e7c.gif)
+  
 ![Register](https://user-images.githubusercontent.com/81836426/139554880-abd8c5da-7fed-4202-93f4-fc25ed39e10d.jpg)
 
 ![login](https://user-images.githubusercontent.com/81836426/139554882-7bb739d1-67ae-4f55-b1de-ba20260e2e10.jpg)
 
-![dahsboard](https://user-images.githubusercontent.com/81836426/139554886-c10b3814-8905-42f5-b6b1-21a9e1f594e5.jpg)
 
   # Description
   This application is a one stop shop for all of your apps. Apps are nested within the dashboard creating an easy user experience to plan your day and interact with your favorite apps."
