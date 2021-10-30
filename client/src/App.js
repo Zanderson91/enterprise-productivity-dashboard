@@ -37,7 +37,7 @@ function App() {
   getBitcoinArticles();
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
           <div className="container">
             <Switch>
@@ -54,7 +54,6 @@ function App() {
                 <ToDoList />
               </Route>
             </Switch>
-            
           </div>
         </div>
       </Router>
