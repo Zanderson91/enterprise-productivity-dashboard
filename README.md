@@ -5,7 +5,8 @@
 
   # Enterprise Productivity Dashboard
   
-  ![Untitled_ Oct 30, 2021 1_24 PM](https://user-images.githubusercontent.com/81836426/139554927-c377611c-fabb-4feb-87f6-a855e2840e7c.gif)
+  
+![Untitled_ Oct 30, 2021 1_24 PM (1)](https://user-images.githubusercontent.com/81836426/139554964-16b152fe-b4c7-4919-ad98-782afecce705.gif)
   
 ![Register](https://user-images.githubusercontent.com/81836426/139554880-abd8c5da-7fed-4202-93f4-fc25ed39e10d.jpg)
 
