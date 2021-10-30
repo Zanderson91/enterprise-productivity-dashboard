@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ToDoForm from './toDoForm';
-//import { getAllToDos, removeToDo, updateToDo } from "../../../utils/toDoAPI";
 import { REMOVE_TODO, UPDATE_TODO } from '../../../utils/mutations';
 import { QUERY_GET_TODOS } from '../../../utils/queries';
 import { useMutation, useQuery } from "@apollo/react-hooks";
@@ -13,15 +12,6 @@ function ToDo({ toDoList, setToDoList }) {
     eagerness: '',
     isComplete: ''
   });
-  const [itemToUpdate, setItemToUpdate] = useState({
-    id: null,
-    text: "",
-    eagerness: "",
-    isComplete: "",
-  });
-  const [itemID, setItemID] = useState(0);
-  const [removeClickState, setRemoveClickState] = useState(false);
-  const [isCompleteClickState, setIsCompleteClickState] = useState(false);
 
   const { data, loading, refetch} = useQuery(QUERY_GET_TODOS);
   const [removeToDo] = useMutation(REMOVE_TODO);
@@ -58,8 +48,6 @@ function ToDo({ toDoList, setToDoList }) {
   if (edit.id) {
     return <ToDoForm edit={edit} setEdit={setEdit} setToDoList={setToDoList} />;
   }
-
-  toDoList.map((item, i) => (console.log(item, i)));
 
   return toDoList.map((item, i) => (
     <div

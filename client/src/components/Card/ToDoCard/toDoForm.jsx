@@ -18,9 +18,8 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
     try
     {
       let newEagerness = !eagerness ? "low" : eagerness;
-      console.log(input, newEagerness, isComplete )
       const { data }  = await createToDo({
-        variables: { text: input, eagerness: newEagerness, isComplete: isComplete } 
+        variables: { text: input, eagerness: newEagerness, isComplete: "false" } 
       });    
       const item = data.createToDo;
       const refetchData = await refetch();
@@ -40,10 +39,9 @@ function ToDoForm({ setToDoList, edit, setEdit }) {
     {
       console.log(edit.id, newInput, newEagerness, edit.isComplete)
       const { data }  = await updateToDo({
-        variables: { id: edit.id, text: newInput, eagerness: newEagerness, isComplete: edit.isComplete } 
+        variables: { _id: edit.id, text: newInput, eagerness: newEagerness, isComplete: edit.isComplete } 
       });       
       const refetchData = await refetch();
-      console.log("TODOLIST", toDoList)
       const toDoList = refetchData.data.toDos;
       setToDoList(toDoList);
       setEdit({ id: null, value: '', eagerness: '', isComplete: '' });  
