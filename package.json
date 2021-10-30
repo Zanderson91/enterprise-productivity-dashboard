@@ -20,7 +20,7 @@
     "react-scripts": "^4.0.3"
     },
     "engines": {
-      "node": ">=10",
+      "node": "16.13",
       "npm": "7"
     }
 }
